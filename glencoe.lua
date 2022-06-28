@@ -95,6 +95,10 @@ find_item = function(url)
 end
 
 allowed = function(url, parenturl)
+  if not string.match(url, "^https?://glencoe%.mheducation%.com/") then
+    return false
+  end
+
   for s in string.gmatch(urlparse.unescape(url), "([0-9]+x?)") do
     if ids[s] then
       return true
